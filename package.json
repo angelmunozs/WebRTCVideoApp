@@ -15,7 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node completeNodeServerWithDataChannel.js",
+    "start": "node completeNodeServerWithDataChannel.js"
   },
   "keywords": [],
   "author": "Grupo 11",
