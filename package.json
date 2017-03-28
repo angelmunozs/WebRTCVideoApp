@@ -1,7 +1,10 @@
 {
-  "name": "nodejs",
+  "name": "IRAC 2017 Grupo 11",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "completeNodeServerWithDataChannel.js",
+  "engines": {
+    "node": "6.9.4"
+  },
   "dependencies": {
     "fs": "0.0.1-security",
     "https": "^1.0.0",
@@ -12,10 +15,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node completeNodeServerWithDataChannel.js",
   },
   "keywords": [],
-  "author": "",
+  "author": "Grupo 11",
   "license": "ISC",
   "description": ""
 }
