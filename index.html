@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Very simple WebRTC application with a Node.js signalling server</title>
+		<style type="text/css">
+			body, html {
+				margin: 0px;
+				padding: 0px;
+				font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+				font-size: 14px;
+				font-style: normal;
+				color: #444;
+			    height: 100%;
+			    min-height: 100%;
+			}
+			@media (min-width: 1200px) {
+				.container {
+					width: 1170px;
+					margin: auto;
+				}
+				.title {
+					width: 1170px;
+					margin: auto;
+				}
+			}
+			@media (max-width: 1200px) {
+			}
+			.container {
+				padding: 15px;
+			}
+			.content {
+				min-width: 100%;
+			}
+			.content div {
+				margin-bottom: 20px;
+			}
+			.header {
+				padding: 15px;
+				min-width: 100%;
+				background-color: #ccc;
+				color: #333;
+			}
+			.header a {
+				text-decoration: none;
+			}
+			.title-left, .title-right {
+				display: inline-block;
+				line-height: 23px;				
+			}
+			.title-right {
+				margin-right: 30px;
+				text-transform: uppercase;
+				font-size: 0.9em;
+				text-align: right;
+				font-style: italic;
+				float: right;
+			}
+			.title-left {
+				font-size: 1.3em;
+				text-align: left;
+			}
+			.title-left img {
+				max-height: 15px;
+				padding-right: 5px;
+			}
+			#mainDiv table {
+				width: 100%;
+				padding: 12px;
+				margin-bottom: 16px;
+			}
+			#mainDiv table tr td {
+				width: 50%;
+				padding: 6px;
+			}
+			#mainDiv table, #mainDiv tr, #mainDiv td {
+				border: none;
+				border-collapse: collapse;
+			}
+			#mainDiv textarea {
+				line-height: 23px;
+				box-sizing: border-box;
+				min-width: 100%;
+				margin: 0px;
+				border: 1px solid #777;
+				overflow: auto;
+				padding: 10px;
+			}
+			#mainDiv {
+				margin-top: 20px;
+			}
+			video {
+				max-width: 100%;
+			}
+			#messages {
+				margin-top: 20px;
+				border: 1px solid #ccc;
+			}
+			#dataChannelReceive {
+				min-height: 200px;
+			}
+			#dataChannelSend {
+				min-height: 100px;
+			}
+			#sentMessages, #receivedMessages {
+				width: 100%;
+			}
+			#dataChannelSendContainer {
+				width: 85%;
+			}
+			#sendButtonContainer {
+				width: 15%;
+			}
+			#dataChannelSendContainer, #sendButtonContainer {
+				display: inline-block;
+				float: left;
+			}
+			button#sendButton {
+				padding: 6px 10px;
+				min-width: 100%;
+				height: 100px;
+				border: 1px solid #777;
+				border-left: none;
+				background: rgb(255,102,0);
+				color: #fff;
+				font-size: 1.5em;
+				text-transform: uppercase;
+			}
+			button#sendButton:hover {
+				cursor: pointer;
+				background: rgb(240,90,0);
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="header">
+			<div class="title">
+				<div class="title-left">
+					<a href="https://webrtc.org/">
+						<img src="https://webrtc.org/assets/images/webrtc-logo-vert-retro-255x305.png">
+					</a>
+					WebRTC application
+				</div>
+				<div class="title-right">
+					Grupo 11
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="content">
+				<div class="description">
+					Trabajo realizado por el equipo 11 del grupo 13.2 del Máster Universitario en Ingeniería de Telecomunicación, en el curso 2016-2017.
+				</div>
+				<div id="mainDiv">
+					<table>
+						<tr>
+							<th>
+								Local video
+							</th>
+							<th>
+								Remote video
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<video id="localVideo" muted autoplay></video>
+							</td>
+							<td>
+								<video id="remoteVideo" autoplay></video>
+							</td>
+						</tr>
+					</table>
+					<div id="sentMessages">
+						<textarea id="dataChannelReceive" disabled></textarea>
+					</div>
+					<div id="receivedMessages">
+						<div id="dataChannelSendContainer">
+							<textarea id="dataChannelSend" disabled placeholder="This will be enabled once the data channel is up..."></textarea>
+						</div>
+						<div id="sendButtonContainer">
+							<button id="sendButton" disabled>Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src='/socket.io/socket.io.js'></script>
+		<script src='js/lib/adapter.js'></script>
+		<script src='js/completeNodeClientWithDataChannel.js'></script>
+	</body>
+</html>
